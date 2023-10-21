@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   jobTitle: {
     fontSize: SIZES.large,
     color: COLORS.primary,
-    fontFamily: FONT.bold,
+    fontWeight: "600",
     textAlign: "center",
   },
   companyInfoBox: {
