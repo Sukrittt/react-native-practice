@@ -16,6 +16,8 @@ const jobTypes = ["Full-time", "Part-time", "Internship", "Freelance"];
 
 const Welcome = () => {
   const router = useRouter();
+
+  const [searchQuery, setSearchQuery] = useState("");
   const [activeJobType, setActiveJobType] = useState("Full-time");
 
   return (
@@ -29,12 +31,17 @@ const Welcome = () => {
         <View style={styles.searchWrapper}>
           <TextInput
             style={styles.searchInput}
-            value=""
-            onChange={() => {}}
+            value={searchQuery}
+            onChangeText={(query) => setSearchQuery(query)}
             placeholder="What are you looking for?"
           />
         </View>
-        <TouchableOpacity style={styles.searchBtn} onPress={() => {}}>
+        <TouchableOpacity
+          style={styles.searchBtn}
+          onPress={() => {
+            if (searchQuery) router.push(`/search/${searchQuery}`);
+          }}
+        >
           <Image
             source={icons.search}
             resizeMode="contain"
