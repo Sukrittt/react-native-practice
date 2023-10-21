@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import {
   ActivityIndicator,
@@ -33,7 +33,11 @@ const JobDetails = () => {
     job_id: jobId,
   });
 
-  const onRefresh = () => {};
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    refetch();
+    setRefreshing(false);
+  }, []);
 
   const displayTabContent = () => {
     switch (activeTab) {
